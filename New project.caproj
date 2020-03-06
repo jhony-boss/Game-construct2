@@ -99,6 +99,19 @@
                 </animation>
             </animation-folder>
         </object-type>
+        <object-type name="enemy" sid="284000013734922">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="918966327077734">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="992261274291866" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families />
     <layout-folder>
