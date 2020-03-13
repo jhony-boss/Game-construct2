@@ -3,15 +3,207 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
-        <event-block sid="561884353910291">
+        <variable constant="0" name="HP" sid="508604831324129" static="0" type="number">3</variable>
+        <variable constant="0" name="pontos" sid="942281339165201" static="0" type="number">0</variable>
+        <event-block sid="889160459549082">
             <conditions>
-                <condition id="-2" name="Compare Y" sid="513524238175975" type="heroi">
-                    <param id="0" name="Comparison">5</param>
-                    <param id="1" name="Y co-ordinate">595</param>
+                <condition id="-2" name="On start of layout" sid="361733511100112" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Pin" id="0" name="Pin to object" sid="111998626134538" type="placar">
+                    <param id="0" name="Pin to">heroi</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="167743158948292" type="heroanimation">
+                    <param id="0" name="Object">heroi</param>
+                    <param id="1" name="Image point (optional)">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="372480994091964" type="heroanimation">
+                    <param id="0" name="Pin to">heroi</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="465358037658523" type="coracao">
+                    <param id="0" name="Pin to">heroi</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="192046475997422">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="284683201389932" type="heroi">
+                    <param id="0" name="Object">inimigo</param>
                 </condition>
             </conditions>
             <actions>
-                <action id="-26" name="Restart layout" sid="161209026672667" type="System" />
+                <action id="-11" name="Subtract from" sid="196816222657629" type="System">
+                    <param id="0" name="Variable">HP</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="216468197113605">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="596288722475202" type="heroi">
+                    <param id="0" name="Object">moeda</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="945227725056912" type="moeda" />
+                <action id="-10" name="Add to" sid="788901005448532" type="System">
+                    <param id="0" name="Variable">pontos</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="549720887555355">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="451113087919288" type="System">
+                    <param id="0" name="Interval (seconds)">1.0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="449033274192368" type="placar">
+                    <param id="0" name="Text">&quot;Pontos: &quot;&amp;pontos</param>
+                </action>
+                <action id="5" name="Set frame" sid="152373414967244" type="coracao">
+                    <param id="0" name="Frame number">HP</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="801066285946584">
+            <conditions>
+                <condition behavior="Platform" id="0" name="Is moving" sid="320259709380751" type="heroi" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="419196622242209" type="heroanimation">
+                    <param id="0" name="Animation">&quot;andando&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="553852083751650">
+            <conditions>
+                <condition id="-22" name="Else" sid="540931011751038" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="247595393385474" type="heroanimation">
+                    <param id="0" name="Animation">&quot;parado&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="598848459893726">
+            <conditions>
+                <condition behavior="Platform" id="3" name="Is jumping" sid="529710382347919" type="heroi" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="857228280199388" type="heroanimation">
+                    <param id="0" name="Animation">&quot;pulando&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="352764353480432">
+            <conditions>
+                <condition behavior="Platform" id="4" name="Is falling" sid="680276592649651" type="heroi" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="587052219448484" type="heroanimation">
+                    <param id="0" name="Animation">&quot;caindo&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="582551248217593">
+            <conditions>
+                <condition id="2" name="Key is down" sid="309983593065093" type="Keyboard">
+                    <param id="0" name="Key">37</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="916796523379312" type="heroanimation">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="452484063722196">
+            <conditions>
+                <condition id="2" name="Key is down" sid="285756776643148" type="Keyboard">
+                    <param id="0" name="Key">39</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="283534319575767" type="heroanimation">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="512729593843488">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="972889461312282" type="System">
+                    <param id="0" name="Variable">HP</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="151034419045390" type="System">
+                    <param id="0" name="Seconds">1</param>
+                </action>
+                <action id="-26" name="Restart layout" sid="516520630501408" type="System" />
+                <action id="-21" name="Reset global variables" sid="924608310061792" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="685327777015039">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="676081702243520" type="heroi">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">650</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="378208493809668" type="System">
+                    <param id="0" name="Variable">HP</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="603848025934134">
+            <conditions>
+                <condition id="9" name="Is overlapping at offset" sid="469930037188864" type="gosma">
+                    <param id="0" name="Object">heroi</param>
+                    <param id="1" name="Offset X">0</param>
+                    <param id="2" name="Offset Y">-2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="129523724249095" type="gosma" />
+            </actions>
+        </event-block>
+        <event-block sid="917395856623317">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="165189655610709" type="heroi">
+                    <param id="0" name="Object">espinhos</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="363450019422055" type="System">
+                    <param id="0" name="Variable">HP</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="362948365969322">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="695766656958082" type="heroi">
+                    <param id="0" name="Object">lava</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" sid="159295239993196" type="System">
+                    <param id="0" name="Variable">HP</param>
+                    <param id="1" name="Value">1</param>
+                </action>
             </actions>
         </event-block>
     </events>
